@@ -91,24 +91,22 @@ body {
     box-shadow: 0 2px 6px rgba(50, 140, 193, 0.2);
 }
 
-/* Colores sutiles según estado */
 .estado-entregado {
-    border-left: 4px solid #59e24a; /* verde suave */
+    border-left: 4px solid #59e24a;
 }
 
 .estado-cancelado {
-    border-left: 4px solid #eb4141; /* rojo suave */
+    border-left: 4px solid #eb4141;
 }
 
 .estado-detenido {
-    border-left: 4px solid #cccccc; /* gris suave */
+    border-left: 4px solid #cccccc;
 }
 
 .estado-transito {
-    border-left: 4px solid #328cc1; /* azul default */
+    border-left: 4px solid #328cc1;
 }
 
-/* Mensaje de error con imagen */
 .error-con-imagen {
     text-align: center;
     color: #333;
@@ -119,9 +117,9 @@ body {
     max-width: 150px;
     margin-bottom: 10px;
 }
-/* Estilo para la fecha en historial */
+
 .fecha-historial {
-    margin-top: 8px; /* Espacio arriba para separar del comentario */
+    margin-top: 8px;
     font-size: 0.85em;
     color: #777;
     font-weight: normal;
@@ -136,10 +134,10 @@ body {
 
 @media (min-width: 1024px) {
     .row {
-        gap: 32px; /* Un poco más de espacio entre columnas */
+        gap: 32px;
     }
     .column {
         flex: 1;
-        min-width: 0; /* Permite que se contraigan si es necesario */
+        min-width: 0;
     }
 }
