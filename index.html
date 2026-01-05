@@ -17,7 +17,14 @@
 
     <section class="consulta">
         <h2>Rastrea tu envío</h2>
-        <input type="text" id="numeroGuia" placeholder="Número de guía" maxlength="10">
+        <input
+        type="text"
+        id="numeroGuia"
+        placeholder="Número de guía"
+        maxlength="20"
+        pattern="[A-Za-z0-9\-_]{1,20}"
+        title="Solo letras, números, guion (-) y guion bajo (_). Máx. 20 caracteres."
+        >
         <button id="btnConsultar">Consultar</button>
         <p id="mensajeError" class="error"></p>
     </section>

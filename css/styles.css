@@ -17,9 +17,9 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+    max-width: 1200px; /* Más ancho que 800px para pantallas grandes */
+    margin: 0 auto;
+    padding: 0 20px; /* Márgenes laterales consistentes */
 }
 
 .consulta {
@@ -80,9 +80,15 @@ body {
 .scrollable .mini-card {
     background: #fff;
     border-radius: 6px;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease; /* Suaviza el cambio */
+}
+
+.scrollable .mini-card:hover {
+    background-color: #f0f7ff; /* Azul muy claro */
+    box-shadow: 0 2px 6px rgba(50, 140, 193, 0.2); /* Sombra azul tenue */
 }
 
 /* Colores sutiles según estado */
@@ -113,10 +119,27 @@ body {
     max-width: 150px;
     margin-bottom: 10px;
 }
+/* Estilo para la fecha en historial */
+.fecha-historial {
+    margin-top: 8px; /* Espacio arriba para separar del comentario */
+    font-size: 0.85em;
+    color: #777;
+    font-weight: normal;
+}
 
 .footer {
     text-align: center;
     padding: 15px;
     background-color: #3471db;
     color: white;
+}
+
+@media (min-width: 1024px) {
+    .row {
+        gap: 32px; /* Un poco más de espacio entre columnas */
+    }
+    .column {
+        flex: 1;
+        min-width: 0; /* Permite que se contraigan si es necesario */
+    }
 }

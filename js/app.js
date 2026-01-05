@@ -8,10 +8,15 @@ const infoEnvio = document.getElementById("infoEnvio");
 const tarjetaPaquetes = document.getElementById("tarjetaPaquetes");
 const tarjetaHistorial = document.getElementById("tarjetaHistorial");
 
+//Limpiar entrada: solo letras, números, guion (-) y guion bajo (_)
+inputGuia.addEventListener('input', function () {
+    this.value = this.value.replace(/[^A-Za-z0-9\-_]/g, '');
+});
+
 btnConsultar.addEventListener("click", consultarEnvio);
 
 async function consultarEnvio() {
-    const guia = inputGuia.value.trim();
+    let guia = inputGuia.value.trim();
     mensajeError.textContent = "";
 
     infoEnvio.classList.add("hidden");
@@ -23,8 +28,13 @@ async function consultarEnvio() {
         return;
     }
 
+    if (guia.length > 20) {
+        mensajeError.textContent = "El número de guía no puede tener más de 20 caracteres.";
+        return;
+    }
+
     try {
-        // 🔹 Consultar envío
+        //Consultar envío
         const resEnvio = await fetch(`${URL_BASE}envio/buscar/${guia}`);
         if (!resEnvio.ok) throw new Error("Envío no encontrado");
         const envio = await resEnvio.json();
@@ -32,7 +42,7 @@ async function consultarEnvio() {
         mostrarEnvio(envio);
         mostrarPaquetes(envio.paquetes);
 
-        // 🔹 Consultar historial
+        //Consultar historial
         const resHistorial = await fetch(`${URL_BASE}envio/historial/${guia}`);
         if (resHistorial.ok) {
             const lista = await resHistorial.json();
@@ -82,7 +92,6 @@ function mostrarHistorial(lista) {
     contenedor.innerHTML = "";
 
     if (!lista || lista.length === 0) {
-        // Mensaje de error con imagen
         contenedor.innerHTML = `
             <div class="error-con-imagen">
                 <img src="img/logo-packetworld.png" alt="Packet World">
@@ -114,7 +123,7 @@ function mostrarHistorial(lista) {
             div.innerHTML = `
                 <strong>${item.estatusNombre || "Sin estatus"}</strong><br>
                 ${item.comentario || "Sin comentario"}<br>
-                <small>${item.fechaCambio}</small>
+                <div class="fecha-historial">${formatearFecha(item.fechaCambio)}</div>
             `;
             contenedor.appendChild(div);
         });
@@ -123,17 +132,32 @@ function mostrarHistorial(lista) {
     tarjetaHistorial.classList.remove("hidden");
 }
 
+// Función para formatear fechas ISO a formato humano en español
+function formatearFecha(fechaISO) {
+    try {
+        const date = new Date(fechaISO);
+        return date.toLocaleString('es-ES', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+            // Opcional: puedes agregar timeZoneName si lo deseas
+        });
+    } catch (e) {
+        return "Fecha inválida";
+    }
+}
+
 // Para mensajes de error general (envío no encontrado)
 function mostrarErrorGeneral(mensaje) {
     const contenedor = document.getElementById("infoEnvio");
     contenedor.innerHTML = `
         <div class="error-con-imagen">
-            <img src="img/logo-packetworld.png" alt="Packet World">
+            <img src="assetsimg/logo-packetworld.png" alt="Packet World">
             <p>${mensaje}</p>
         </div>
     `;
     contenedor.classList.remove("hidden");
 }
-
-
-
