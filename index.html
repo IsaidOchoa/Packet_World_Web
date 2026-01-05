@@ -22,6 +22,7 @@
         <p id="mensajeError" class="error"></p>
     </section>
 
+    <!-- Tarjeta principal del envío -->
     <section id="infoEnvio" class="card hidden">
         <h3>Información del envío</h3>
         <p><strong>Número de guía:</strong> <span id="lblGuia"></span></p>
@@ -30,10 +31,26 @@
         <p><strong>Estatus actual:</strong> <span id="lblEstatus"></span></p>
     </section>
 
-    <section id="historial" class="card hidden">
-        <h3>Historial de estados</h3>
-        <ul id="listaHistorial"></ul>
-    </section>
+    <!-- Contenedor de columnas: Paquetes | Historial -->
+    <div class="row">
+
+        <!-- Columna Paquetes -->
+        <div class="column">
+            <div id="tarjetaPaquetes" class="card hidden">
+                <h3>Paquetes</h3>
+                <div id="listaPaquetes" class="scrollable"></div>
+            </div>
+        </div>
+
+        <!-- Columna Historial -->
+        <div class="column">
+            <div id="tarjetaHistorial" class="card hidden">
+                <h3>Historial de Estados</h3>
+                <div id="listaHistorial" class="scrollable"></div>
+            </div>
+        </div>
+
+    </div>
 
 </main>
 

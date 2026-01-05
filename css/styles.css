@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-    background-color: #0b3c5d;
+    background-color: #3471db;
     color: white;
     padding: 30px;
     text-align: center;
@@ -31,6 +31,8 @@ body {
     padding: 10px;
     width: 60%;
     margin-right: 10px;
+    border-radius: 4px; /* Redondeo ligero */
+    border: 1px solid #ccc;
 }
 
 .consulta button {
@@ -39,6 +41,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
+    border-radius: 4px; /* Redondeo ligero */
 }
 
 .consulta button:hover {
@@ -57,25 +60,63 @@ body {
     display: none;
 }
 
-.error {
-    color: red;
-    margin-top: 10px;
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-#listaHistorial {
-    list-style: none;
-    padding: 0;
+.column {
+    flex: 1;
+    min-width: 280px;
 }
 
-#listaHistorial li {
-    border-left: 4px solid #328cc1;
+.scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.scrollable .mini-card {
+    background: #fff;
+    border-radius: 6px;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Colores sutiles según estado */
+.estado-entregado {
+    border-left: 4px solid #59e24a; /* verde suave */
+}
+
+.estado-cancelado {
+    border-left: 4px solid #eb4141; /* rojo suave */
+}
+
+.estado-detenido {
+    border-left: 4px solid #cccccc; /* gris suave */
+}
+
+.estado-transito {
+    border-left: 4px solid #328cc1; /* azul default */
+}
+
+/* Mensaje de error con imagen */
+.error-con-imagen {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.error-con-imagen img {
+    max-width: 150px;
+    margin-bottom: 10px;
 }
 
 .footer {
     text-align: center;
     padding: 15px;
-    background-color: #eaeaea;
+    background-color: #3471db;
+    color: white;
 }
