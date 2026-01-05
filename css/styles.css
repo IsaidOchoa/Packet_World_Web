@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.header {
+    background-color: #0b3c5d;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.consulta {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.consulta input {
+    padding: 10px;
+    width: 60%;
+    margin-right: 10px;
+}
+
+.consulta button {
+    padding: 10px 20px;
+    background-color: #328cc1;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.consulta button:hover {
+    background-color: #1d6fa5;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+#listaHistorial {
+    list-style: none;
+    padding: 0;
+}
+
+#listaHistorial li {
+    border-left: 4px solid #328cc1;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #eaeaea;
+}

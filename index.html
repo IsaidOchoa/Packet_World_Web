@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Packet World | Consulta de Envíos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Packet World</h1>
+    <p>Consulta el estatus de tu envío</p>
+</header>
+
+<main class="container">
+
+    <section class="consulta">
+        <h2>Rastrea tu envío</h2>
+        <input type="text" id="numeroGuia" placeholder="Número de guía" maxlength="10">
+        <button id="btnConsultar">Consultar</button>
+        <p id="mensajeError" class="error"></p>
+    </section>
+
+    <section id="infoEnvio" class="card hidden">
+        <h3>Información del envío</h3>
+        <p><strong>Número de guía:</strong> <span id="lblGuia"></span></p>
+        <p><strong>Destinatario:</strong> <span id="lblDestinatario"></span></p>
+        <p><strong>Dirección:</strong> <span id="lblDireccion"></span></p>
+        <p><strong>Estatus actual:</strong> <span id="lblEstatus"></span></p>
+    </section>
+
+    <section id="historial" class="card hidden">
+        <h3>Historial de estados</h3>
+        <ul id="listaHistorial"></ul>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© Packet World - Proyecto académico</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
