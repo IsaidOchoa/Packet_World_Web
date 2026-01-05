@@ -17,9 +17,9 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Más ancho que 800px para pantallas grandes */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* Márgenes laterales consistentes */
+    padding: 0 20px;
 }
 
 .consulta {
@@ -31,7 +31,7 @@ body {
     padding: 10px;
     width: 60%;
     margin-right: 10px;
-    border-radius: 4px; /* Redondeo ligero */
+    border-radius: 4px;
     border: 1px solid #ccc;
 }
 
@@ -41,7 +41,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    border-radius: 4px; /* Redondeo ligero */
+    border-radius: 4px;
 }
 
 .consulta button:hover {
@@ -83,12 +83,12 @@ body {
     padding: 12px;
     margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: box-shadow 0.2s ease, background-color 0.2s ease; /* Suaviza el cambio */
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .scrollable .mini-card:hover {
-    background-color: #f0f7ff; /* Azul muy claro */
-    box-shadow: 0 2px 6px rgba(50, 140, 193, 0.2); /* Sombra azul tenue */
+    background-color: #f0f7ff;
+    box-shadow: 0 2px 6px rgba(50, 140, 193, 0.2);
 }
 
 /* Colores sutiles según estado */

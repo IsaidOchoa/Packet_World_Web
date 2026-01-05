@@ -17,19 +17,19 @@ btnConsultar.addEventListener("click", consultarEnvio);
 
 async function consultarEnvio() {
     let guia = inputGuia.value.trim();
-    mensajeError.textContent = "";
 
+    mensajeError.textContent = "";
     infoEnvio.classList.add("hidden");
     tarjetaPaquetes.classList.add("hidden");
     tarjetaHistorial.classList.add("hidden");
 
     if (guia === "") {
-        mensajeError.textContent = "Ingresa un número de guía válido.";
+        mostrarErrorGeneral("Ingresa un número de guía válido.");
         return;
     }
 
     if (guia.length > 20) {
-        mensajeError.textContent = "El número de guía no puede tener más de 20 caracteres.";
+        mostrarErrorGeneral("El número de guía no puede tener más de 20 caracteres.");
         return;
     }
 
@@ -39,6 +39,7 @@ async function consultarEnvio() {
         if (!resEnvio.ok) throw new Error("Envío no encontrado");
         const envio = await resEnvio.json();
 
+        //Éxito: mostrar datos reales
         mostrarEnvio(envio);
         mostrarPaquetes(envio.paquetes);
 
@@ -51,18 +52,20 @@ async function consultarEnvio() {
 
     } catch (error) {
         console.error(error);
-        mensajeError.textContent = "No se encontró información para ese número de guía.";
+        mostrarErrorGeneral("No se encontró información para ese número de guía.");
     }
 }
 
 function mostrarEnvio(envio) {
-    document.getElementById("lblGuia").textContent = envio.numeroGuia;
-    document.getElementById("lblDestinatario").textContent = envio.nombreDestinatario;
-    document.getElementById("lblDireccion").textContent =
-        `${envio.calleDestino} ${envio.numeroDestino}`;
-    document.getElementById("lblEstatus").textContent = envio.estatus;
-
-    infoEnvio.classList.remove("hidden");
+    const contenedor = document.getElementById("infoEnvio");
+    contenedor.innerHTML = `
+        <h3>Información del envío</h3>
+        <p><strong>Número de guía:</strong> <span>${envio.numeroGuia}</span></p>
+        <p><strong>Destinatario:</strong> <span>${envio.nombreDestinatario}</span></p>
+        <p><strong>Dirección:</strong> <span>${envio.calleDestino} ${envio.numeroDestino}</span></p>
+        <p><strong>Estatus actual:</strong> <span>${envio.estatus}</span></p>
+    `;
+    contenedor.classList.remove("hidden");
 }
 
 function mostrarPaquetes(lista) {
@@ -94,7 +97,7 @@ function mostrarHistorial(lista) {
     if (!lista || lista.length === 0) {
         contenedor.innerHTML = `
             <div class="error-con-imagen">
-                <img src="img/logo-packetworld.png" alt="Packet World">
+                <img src="assets/img/logo-packetworld.png" alt="Packet World">
                 <p>No hay historial disponible</p>
             </div>
         `;
@@ -103,7 +106,6 @@ function mostrarHistorial(lista) {
             const div = document.createElement("div");
             div.className = "mini-card";
 
-            // Asignar clase según estado
             switch ((item.estatusNombre || "").toLowerCase()) {
                 case "entregado":
                     div.classList.add("estado-entregado");
@@ -143,19 +145,17 @@ function formatearFecha(fechaISO) {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit'
-            // Opcional: puedes agregar timeZoneName si lo deseas
         });
     } catch (e) {
         return "Fecha inválida";
     }
 }
 
-// Para mensajes de error general (envío no encontrado)
 function mostrarErrorGeneral(mensaje) {
     const contenedor = document.getElementById("infoEnvio");
     contenedor.innerHTML = `
         <div class="error-con-imagen">
-            <img src="assetsimg/logo-packetworld.png" alt="Packet World">
+            <img src="assets/img/ic_logo_packet_world.png" alt="Packet World">
             <p>${mensaje}</p>
         </div>
     `;
